@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/HongTao-Huang/QQ-music/issues"
   },
-  "homepage": "https://github.com/HongTao-Huang/QQ-music#readme"
+  "homepage": "https://github.com/HongTao-Huang/QQ-music#readme",
+  "dependencies": {
+    "swiper": "^4.3.3"
+  }
 }

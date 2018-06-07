@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  background-color: #F4F4F4; }
+
+#header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 44px;
+  background-color: #31c27c; }
+  #header > h1 {
+    display: none; }
+  #header #log {
+    height: 25px;
+    margin: 10px; }
+  #header .playButton {
+    position: absolute;
+    display: inline-block;
+    top: 8px;
+    right: 10px;
+    height: 28px;
+    line-height: 28px;
+    background-color: #149c5a;
+    color: #fff;
+    padding: 0 12px;
+    font-size: 14px;
+    border-radius: 99px; }
+
+#swiper-view .swiper-container {
+  width: 100%;
+  height: 128px; }
+
+/*# sourceMappingURL=app.css.map */
