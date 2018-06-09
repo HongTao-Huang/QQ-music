@@ -1,6 +1,16 @@
 #swiper-view{
   .swiper-container {
     width: $swiper-width;
-    height: $swiper-height;
+    display: flex;
+    > .swiper-wrapper{
+        flex-basis: 100%;
+      > a {
+        display: block;
+        img {
+          width: 100%;
+          display: block;
+        }
+      }
+    }
   }
 }

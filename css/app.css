@@ -6,18 +6,21 @@
 body {
   background-color: #F4F4F4; }
 
-#header {
+ul, ol {
+  list-style: none; }
+
+.header {
   display: flex;
   align-items: center;
   position: relative;
   height: 44px;
   background-color: #31c27c; }
-  #header > h1 {
+  .header > h1 {
     display: none; }
-  #header #log {
+  .header .log {
     height: 25px;
     margin: 10px; }
-  #header .playButton {
+  .header .playButton {
     position: absolute;
     display: inline-block;
     top: 8px;
@@ -30,8 +33,39 @@ body {
     font-size: 14px;
     border-radius: 99px; }
 
+.topNavbar {
+  width: 100%;
+  background-color: #fff; }
+  .topNavbar .navList {
+    width: 100%;
+    display: flex;
+    align-items: center; }
+    .topNavbar .navList > li {
+      flex: 1;
+      text-align: center;
+      padding: 9px 0 10px 0;
+      color: rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      position: relative; }
+    .topNavbar .navList li:nth-child(1).active {
+      color: #31c27c; }
+    .topNavbar .navList li:nth-child(1).active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-top: 2px solid #31c27c; }
+
 #swiper-view .swiper-container {
   width: 100%;
-  height: 128px; }
+  display: flex; }
+  #swiper-view .swiper-container > .swiper-wrapper {
+    flex-basis: 100%; }
+    #swiper-view .swiper-container > .swiper-wrapper > a {
+      display: block; }
+      #swiper-view .swiper-container > .swiper-wrapper > a img {
+        width: 100%;
+        display: block; }
 
 /*# sourceMappingURL=app.css.map */

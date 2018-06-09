@@ -1,5 +1,5 @@
 
-#header{
+.header{
   display: flex;
   align-items: center;
   position: relative;
@@ -8,7 +8,7 @@
   > h1{
     display: none;
   }
-  #log{
+  .log{
       height: $log-height;
       margin: $log-marginLeft;
   }

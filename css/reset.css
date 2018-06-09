@@ -6,6 +6,9 @@ Error: Undefined variable: "$body-backgroundcolor".
 2: body{
 3:   background-color: $body-backgroundcolor;
 4: }
+5: ul,ol{
+6:   list-style: none;
+7: }
 
 Backtrace:
 ./scss/reset.scss:3
@@ -62,4 +65,4 @@ C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/sass-listen-4.0.0/lib/sass-listen/interna
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$body-backgroundcolor\".\A         on line 3 of ./scss/reset.scss\A \A 1: *{margin: 0;padding: 0;box-sizing: border-box;}\A 2: body{\A 3:   background-color: $body-backgroundcolor;\A 4: }"; }
+  content: "Error: Undefined variable: \"$body-backgroundcolor\".\A         on line 3 of ./scss/reset.scss\A \A 1: *{margin: 0;padding: 0;box-sizing: border-box;}\A 2: body{\A 3:   background-color: $body-backgroundcolor;\A 4: }\A 5: ul,ol{\A 6:   list-style: none;\A 7: }"; }
