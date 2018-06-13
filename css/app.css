@@ -15,7 +15,7 @@ ul, ol {
   position: relative;
   height: 44px;
   background-color: #31c27c; }
-  .header > h1 {
+  .header h1 {
     display: none; }
   .header .log {
     height: 25px;
@@ -33,39 +33,93 @@ ul, ol {
     font-size: 14px;
     border-radius: 99px; }
 
-.topNavbar {
+.navView {
   width: 100%;
   background-color: #fff; }
-  .topNavbar .navList {
+  .navView .navList {
     width: 100%;
     display: flex;
     align-items: center; }
-    .topNavbar .navList > li {
+    .navView .navList .listItem {
       flex: 1;
       text-align: center;
       padding: 9px 0 10px 0;
       color: rgba(0, 0, 0, 0.6);
       cursor: pointer;
       position: relative; }
-    .topNavbar .navList li:nth-child(1).active {
-      color: #31c27c; }
-    .topNavbar .navList li:nth-child(1).active::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      border-top: 2px solid #31c27c; }
+      .navView .navList .listItem.active {
+        color: #31c27c; }
+      .navView .navList .listItem.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-top: 2px solid #31c27c; }
 
-#swiper-view .swiper-container {
+main #recView .swiper-container {
   width: 100%;
   display: flex; }
-  #swiper-view .swiper-container > .swiper-wrapper {
+  main #recView .swiper-container .swiper-wrapper {
     flex-basis: 100%; }
-    #swiper-view .swiper-container > .swiper-wrapper > a {
+    main #recView .swiper-container .swiper-wrapper a {
       display: block; }
-      #swiper-view .swiper-container > .swiper-wrapper > a img {
+      main #recView .swiper-container .swiper-wrapper a img {
         width: 100%;
         display: block; }
+main #recView .radios, main #recView .hotSongs {
+  padding: 14px 2px 7px 10px;
+  width: 100%; }
+  main #recView .radios .title, main #recView .hotSongs .title {
+    font-weight: normal;
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 11px; }
+  main #recView .radios .list, main #recView .hotSongs .list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%; }
+    main #recView .radios .list .listItem, main #recView .hotSongs .list .listItem {
+      flex: 1;
+      flex-basis: 40%;
+      background-color: #fff;
+      font-size: 14px;
+      margin-bottom: 10px;
+      margin-right: 8px; }
+      main #recView .radios .list .listItem .listMedia, main #recView .hotSongs .list .listItem .listMedia {
+        position: relative; }
+        main #recView .radios .list .listItem .listMedia img, main #recView .hotSongs .list .listItem .listMedia img {
+          width: 100%;
+          display: block;
+          min-height: 145px; }
+        main #recView .radios .list .listItem .listMedia .icon, main #recView .hotSongs .list .listItem .listMedia .icon {
+          background-image: url(../images/icon_play.png);
+          background-repeat: no-repeat;
+          background-size: 24px 60px; }
+        main #recView .radios .list .listItem .listMedia .icon_play, main #recView .hotSongs .list .listItem .listMedia .icon_play {
+          position: absolute;
+          height: 24px;
+          bottom: 5px;
+          right: 5px;
+          width: 24px;
+          background-position: 0 0; }
+      main #recView .radios .list .listItem .listTitle, main #recView .hotSongs .list .listItem .listTitle {
+        margin-top: 5px;
+        padding: 0 0 22px 7px; }
+main #recView .footer {
+  margin: 10px 0 22px; }
+  main #recView .footer .footerLog {
+    background-image: url(../images/logo_footer.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 82px;
+    height: 24px;
+    margin: 0 auto 10px; }
+main #recView.hide {
+  display: none; }
+main #rankingView.hide {
+  display: none; }
+main #searchView.hide {
+  display: none; }
 
 /*# sourceMappingURL=app.css.map */

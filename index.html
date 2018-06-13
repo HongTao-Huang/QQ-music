@@ -11,35 +11,42 @@
     <title>QQ 音乐</title>
 </head>
 <body>
-    <header id="header" class="header">
-        <h1>QQ音乐</h1>
-        <img src="./images/logo.png" alt="log" class="log">
-        <div class="playButton">播放器</div>
-    </header>
-    <nav class="topNavbar" id="topNavbar">
-        <ul class="navList">
-            <li>推荐</li>
-            <li>排行榜</li>
-            <li>搜索</li>
-        </ul>
-    </nav>
-    <main id="main" class="main">
-        <div id="swiper-view">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <a href="https://y.qq.com/m/act/383/gaokao_test.html" class="swiper-slide"><img src="https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/286405.jpg" alt="图片"></a>
-                    <a href="https://y.qq.com/m/act/choosebigstar/index.html" class="swiper-slide"><img src="https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/287226.jpg" alt="图片"></a>
-                    <a href="https://y.qq.com/m/client/music_headline/index.html?_hidehd=1&_button=2&zid=817094" class="swiper-slide"><img src="https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/286959.jpg" alt="图片"></a>
-                    <a href="https://y.qq.com/m/client/fan_mv/info.html?id=16" class="swiper-slide"><img src="https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/286379.jpg" alt="图片"></a>
-                    <a href="https://y.qq.com/msa/362/30_5540.html" class="swiper-slide"><img src="https://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/287050.jpg" alt="图片"></a>
-                </div>
-                <!-- 如果需要分页器 -->
-                <div class="swiper-pagination"></div>
-            </div>
-            <!--导航等组件可以放在container之外-->
+<header id="header" class="header">
+    <h1>QQ音乐</h1>
+    <img src="./images/logo.png" alt="log" class="log">
+    <div class="playButton">播放器</div>
+</header>
+<nav class="navView" id="topNavbar">
+    <ul class="navList">
+        <li class="listItem active" data-role="tabs" data-view="#recView">推荐</li>
+        <li class="listItem" data-role="tabs" data-view="#rankingView">排行榜</li>
+        <li class="listItem" data-role="tabs" data-view="#searchView">搜索</li>
+    </ul>
+</nav>
+<main id="main" class="main">
+    <div id="recView">
+        <div class="swiper-container" id="slider"></div>
+
+        <div class="radios">
+            <h2 class="title">电台</h2>
+            <div class="list"></div>
         </div>
-    </main>
-    <script src="./node_modules/swiper/dist/js/swiper.min.js"></script>
-    <script src="./scripts/swiper-view.js"></script>
+
+        <div class="hotSongs">
+            <h2 class="title">热门歌单</h2>
+            <div class="list"></div>
+        </div>
+
+        <footer class="footer">
+            <div class="footerLog"></div>
+        </footer>
+    </div>
+    <div id="rankingView">排行榜</div>
+    <div id="searchView">搜索</div>
+</main>
+<script src="./scripts/nav.js"></script>
+<script src="./node_modules/swiper/dist/js/swiper.min.js"></script>
+<script src="./scripts/slider.js"></script>
+<script src="./scripts/rec.js"></script>
 </body>
 </html>
