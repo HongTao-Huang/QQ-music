@@ -9,6 +9,14 @@ body {
 ul, ol {
   list-style: none; }
 
+h1, h2, h3 {
+  font-weight: normal; }
+
+.clearFix::after {
+  content: '';
+  display: block;
+  clear: both; }
+
 .header {
   display: flex;
   align-items: center;
@@ -117,6 +125,36 @@ main #recView .footer {
     margin: 0 auto 10px; }
 main #recView.hide {
   display: none; }
+main #rankingView .topList {
+  padding: 10px; }
+  main #rankingView .topList .topListItem {
+    margin-bottom: 10px; }
+    main #rankingView .topList .topListItem .topItemMedia {
+      float: left; }
+      main #rankingView .topList .topListItem .topItemMedia img {
+        display: block;
+        width: 100px;
+        height: 100px; }
+    main #rankingView .topList .topListItem .topItemInfo {
+      padding: 4px 0; }
+      main #rankingView .topList .topListItem .topItemInfo .topContent {
+        margin: 0 10px 0 115px; }
+        main #rankingView .topList .topListItem .topItemInfo .topContent .omit, main #rankingView .topList .topListItem .topItemInfo .topContent .topTitle, main #rankingView .topList .topListItem .topItemInfo .topContent .topText {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis; }
+        main #rankingView .topList .topListItem .topItemInfo .topContent .topTitle {
+          font-size: 16px;
+          line-height: 24px;
+          margin-bottom: 5px;
+          color: #000; }
+        main #rankingView .topList .topListItem .topItemInfo .topContent .topText {
+          color: rgba(0, 0, 0, 0.5);
+          font-size: 14px;
+          line-height: 21px; }
+          main #rankingView .topList .topListItem .topItemInfo .topContent .topText .songName {
+            color: black;
+            margin: 0 5px 0 8px; }
 main #rankingView.hide {
   display: none; }
 main #searchView.hide {
