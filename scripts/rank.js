@@ -1,4 +1,4 @@
-fetch('../json/ranking.json').then(respons => respons.json()).then(render);
+fetch('https://qq-music-api.now.sh/top').then(respons => respons.json()).then(render);
 
 function render(json){
     renderTopList(json.data.topList);

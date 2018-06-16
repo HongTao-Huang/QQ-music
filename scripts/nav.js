@@ -1,11 +1,16 @@
 !(function () {
     let navView = document.querySelector('#topNavbar');
     !(function () {
+        let nav = document.querySelector('#topNavbar .navList');
         let main = document.querySelector('main');
+        [].forEach.call(nav.children, child=>{
+            child.classList.remove('active');
+        });
         [].forEach.call(main.children, child=>{
             child.classList.add('hide');
         })
-        main.firstElementChild.classList.remove('hide');
+        nav.children.item(2).classList.add('active');
+        main.children.item(2).classList.remove('hide');
     }).call();
     navView.addEventListener('click',function (ev) {
         let element = ev.target;

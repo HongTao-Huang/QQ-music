@@ -1,6 +1,6 @@
 // import { Slider } from './slider.js'
 
-fetch('../json/rec.json').then(respons => respons.json()).then(render);
+fetch('https://qq-music-api.now.sh').then(respons => respons.json()).then(render);
 
 function render(json) {
     renderSlider(json.data.slider);

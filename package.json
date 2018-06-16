@@ -21,6 +21,10 @@
   },
   "homepage": "https://github.com/HongTao-Huang/QQ-music#readme",
   "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
     "swiper": "^4.3.3"
   }
 }
