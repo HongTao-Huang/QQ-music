@@ -1,6 +1,4 @@
 #player{
-  opacity: 1;
-  transform: translateX(0);
   width: 100%;
   height: 100%;
   position: fixed;
@@ -8,6 +6,7 @@
   left: 0;
   overflow: hidden;
   z-index: 9;
+  border: 1px solid red;
   //transition: 0.3s;
   .player-container{
     z-index: 9;
@@ -16,6 +15,24 @@
     display: flex;
     flex-direction: column;
     background-color: rgba(0,0,0,0.6);
-
+    @import "playerHeader";
+    @import "playerlyrics";
+    @import "playerFooter";
   }
+  .player-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-size: cover;
+    background-position: bottom center;
+    filter: blur(15px);
+    transform:scale(1.15);
+  }
+}
+
+#player.show{
+  opacity: 1;
+  transform: translateX(0);
 }
