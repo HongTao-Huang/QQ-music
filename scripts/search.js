@@ -1,7 +1,9 @@
-class Search {
+import { searchUrl } from "./helper.js";
+
+export class Search {
     constructor(el) {
-        this.el = el;
-        this.$input = el.querySelector('#search');
+        this.$el = el;
+        this.$input = this.$el.querySelector('#search');
         this.$input.addEventListener('keyup', this.onKeyUp.bind(this));
         this.$loadingView = el.querySelector('.searchLoading');
         this.$songs = el.querySelector('.songList');
@@ -42,7 +44,7 @@ class Search {
     search(keyword, page) {
         if (this.fetching) return;
         this.loading();
-        fetch(`http://localhost:4000/search?keyword=${keyword}&page=${page}`)
+        fetch(searchUrl(keyword,page || this.page))
             .then(res => res.json())
             .then(json => {
                 this.page = json.data.song.curpage;
@@ -64,11 +66,11 @@ class Search {
                         <div class="songname">${datas.zhida.singername}</div>
                         <div class="singers">单曲：${datas.zhida.songnum} 专辑：${datas.zhida.albumnum}</div>
                    </div>
-                    <a href="#player?artist=${artist}&songid=${song.songid}&songname=${song.songname}&albummid=${song.albummid}&duration=${song.interval}" class="songItem">
+                    <a href="#player?artist=${artist}&songmid=${song.songmid}&songid=${song.songid}&songname=${song.songname}&albummid=${song.albummid}&duration=${song.interval}" class="songItem">
                         <span class="iconMusic"></span>
                         <div class="songname">${song.songname}</div>
                         <div class="singers">${artist}</div>
-                   </a>`: `<a href="#player?artist=${artist}&songid=${song.songid}&songname=${song.songname}&albummid=${song.albummid}&duration=${song.interval}" class="songItem">
+                   </a>`: `<a href="#player?artist=${artist}&songmid=${song.songmid}&songid=${song.songid}&songname=${song.songname}&albummid=${song.albummid}&duration=${song.interval}" class="songItem">
                 <span class="iconMusic"></span>
                 <div class="songname">${song.songname}</div>
                 <div class="singers">${artist}</div>
@@ -90,5 +92,3 @@ class Search {
         }
     }
 }
-
-let search = new Search(document.querySelector('#searchView'));

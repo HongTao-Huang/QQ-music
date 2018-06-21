@@ -6,8 +6,9 @@
   left: 0;
   overflow: hidden;
   z-index: 9;
-  border: 1px solid red;
-  //transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+  transform: translateY(-100%);
   .player-container{
     z-index: 9;
     height: 100%;
@@ -24,6 +25,7 @@
     top: 0;
     left: 0;
     bottom: 0;
+    z-index: 1;
     width: 100%;
     background-size: cover;
     background-position: bottom center;
@@ -34,5 +36,5 @@
 
 #player.show{
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }

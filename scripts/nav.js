@@ -1,28 +1,39 @@
-!(function () {
-    let navView = document.querySelector('#topNavbar');
-    !(function () {
-        let nav = document.querySelector('#topNavbar .navList');
-        let main = document.querySelector('main');
-        [].forEach.call(nav.children, child=>{
+export class Navbar{
+    constructor(el){
+        this.$el = el;
+        this.$navList = this.$el.querySelector('.navList');
+        this.$main = document.querySelector('main');
+        this.$el.addEventListener('click' , this.tab.bind(this))
+        this.init(2);
+    }
+
+    tab(ev){
+        let target = ev.target;
+        this.removeActive();
+        target.classList.add('active');
+        if(target.dataset.role !== 'tabs') return;
+        this.addHide();
+        this.$view = this.$main.querySelector(target.dataset.view);
+        this.$view.classList.remove('hide');
+        window.dispatchEvent(new Event('scroll'));
+    }
+
+    removeActive(){
+        [].forEach.call(this.$navList.children, child=>{
             child.classList.remove('active');
         });
-        [].forEach.call(main.children, child=>{
+    }
+
+    addHide(){
+        [].forEach.call(this.$main.children, child=>{
             child.classList.add('hide');
         })
-        nav.children.item(2).classList.add('active');
-        main.children.item(2).classList.remove('hide');
-    }).call();
-    navView.addEventListener('click',function (ev) {
-        let element = ev.target;
-        [].forEach.call(element.parentElement.children, tab =>{
-            tab.classList.remove('active');
-        })
-        element.classList.add('active');
-        if(element.dataset.role !== 'tabs') return;
-        let nowTab = document.querySelector(element.dataset.view);
-         [].forEach.call(nowTab.parentElement.children, child =>{
-             child.classList.add('hide');
-         })
-        nowTab.classList.remove('hide');
-    })
-}).call();
+    }
+
+    init(item){
+        this.removeActive();
+        this.addHide();
+        this.$navList.children.item(item).classList.add('active');
+        this.$main.children.item(item).classList.remove('hide');
+    }
+}

@@ -28,9 +28,26 @@
     background-image: url(../images/sprite_play.png);
     background-repeat: no-repeat;
     background-size: 40px 380px;
-    background-position: 15px -153px;
+
   }
   .icon-play{
+    background-position: 13px -153px;
+  }
+  .icon-pause{
     background-position: 15px -183px;
+  }
+
+  .song-name {
+    height: 30px;
+    font-size: 18px;
+    font-weight: normal;
+    color: #fff;
+    @extend .omit;
+  }
+  .song-artist {
+    height: 21px;
+    font-size: 14px;
+    color: #fff;
+    @extend .omit;
   }
 }

@@ -1,44 +1,56 @@
-// import { Slider } from './slider.js'
+import { RECOMMEND_URL } from "./constans.js";
+import { Slider } from "./slider.js";
+import {Lazyload} from "./lazyload.js";
 
-fetch('https://qq-music-api.now.sh').then(respons => respons.json()).then(render);
+export class Recommend {
+    constructor(el) {
+        this.$el = el;
+        this.lazy = new Lazyload();
+    }
 
-function render(json) {
-    renderSlider(json.data.slider);
-    renderRadios(json.data.radioList);
-    renderhotSongs(json.data.songList);
-    lazyload();
-}
+    launch(){
+        fetch(RECOMMEND_URL)
+            .then(respons => respons.json())
+            .then(json => this.json = json)
+            .then(() => this.render());
+    }
 
-function renderSlider(slides) {
-    this.slider = new Slider({
-        el: document.querySelector('#slider'),
-        slides: slides.map(slide => ({
-            link: slide.linkUrl.replace('http://', 'https://'),
-            image: slide.picUrl.replace('http://', 'https://')
-        }))
-    })
-}
+    render(){
+        this.renderSlider(this.json.data.slider);
+        this.renderRadios(this.json.data.radioList);
+        this.renderhotSongs(this.json.data.songList);
+        this.lazy.lazyload();
+    }
 
-function renderRadios(radios) {
-    document.querySelector('.radios .list').innerHTML = radios.map(radio =>
-        `<div class="listItem">
+    renderSlider(slides) {
+        this.slider = new Slider({
+            el: document.querySelector('#slider'),
+            slides: slides.map(slide => ({
+                link: slide.linkUrl.replace('http://', 'https://'),
+                image: slide.picUrl.replace('http://', 'https://')
+            }))
+        })
+    }
+
+    renderRadios(radios) {
+        this.$el.querySelector('.radios .list').innerHTML = radios.map(radio =>
+            `<div class="listItem">
             <div class="listMedia">
                 <img data-src="${radio.picUrl}" alt="图片" class="lazyload">
                 <span class="icon icon_play"></span>
             </div>
             <div class="listTitle">${radio.Ftitle}</div>
         </div>`).join('')
-}
+    }
 
-function renderhotSongs(radios) {
-    document.querySelector('.hotSongs .list').innerHTML = radios.map(list =>
-        `<div class="listItem">
+    renderhotSongs(radios) {
+        this.$el.querySelector('.hotSongs .list').innerHTML = radios.map(list =>
+            `<div class="listItem">
             <div class="listMedia">
                 <img data-src="${list.picUrl}" alt="图片" class="lazyload">
                 <span class="icon icon_play"></span>
             </div>
             <div class="listTitle">${list.songListDesc}</div>
         </div>`).join('')
+    }
 }
-
-

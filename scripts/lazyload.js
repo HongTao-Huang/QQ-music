@@ -1,56 +1,71 @@
-function lazyload() {
-    let imgs = [].slice.call(document.querySelectorAll('.lazyload'));
-    if('IntersectionObserver' in window){
-        let observer = new IntersectionObserver(function (entries) {
+export class Lazyload{
+    constructor(){
+        this.$els = '';
+        this.imags = '';
+    }
+
+    observerLoad(){
+        this.observer = new IntersectionObserver( (entries) => {
                 entries.forEach(entry => {
                     if (entry.intersectionRatio > 0) {
-                        loadImg(entry.target, () => {
-                            observer.unobserve(entry.target)
+                        this.loadingImg(entry.target, () => {
+                            this.observer.unobserve(entry.target)
                         })
                     }
                 })
             }, {threshold: 0.01}
-        )
-        imgs.forEach(img => observer.observe(img))
+        );
+        this.imags.forEach(img => this.observer.observe(img));
     }
-    let onscroll = throttle(function () {
-        if(imgs.length === 0){
-            return window.removeEventListener('scroll',onscroll);
+
+    listenerLoad(){
+        this.onscroll = this.throttle( () => {
+            if(this.imags.length === 0){
+                return window.removeEventListener('scroll',this.onscroll);
+            }
+            this.imags.forEach(img =>this.inViewport(img) && this.loadingImg(img));
+        },250);
+        window.addEventListener('scroll',this.onscroll);
+    }
+
+    lazyload(){
+        this.$els = document.querySelectorAll('.lazyload');
+        this.imags = [].slice.call(this.$els);
+        if('IntersectionObserver' in window){
+            this.observerLoad();
+        } else {
+            this.listenerLoad();
         }
-         // imgs = imgs.filter(img => img.classList.contains('lazyload'));
-         imgs.forEach(img =>inViewport(img) && loadImg(img));
-    },250);
-    window.addEventListener('scroll',onscroll);
-    window.dispatchEvent(new Event('scroll'));
-}
-
-function inViewport(img) {
-    let {top , left , right , bottom} = img.getBoundingClientRect();
-    let vpHeight = document.documentElement.clientHeight;
-    return (top > 0 && top < vpHeight || bottom > 0 && bottom < vpHeight);
-}
-
-function loadImg(img , callback) {
-    let image = new Image();
-    image.src = img.dataset.src;
-    image.onload = function () {
-        img.src = image.src;
-        img.classList.remove('lazyload');
-        if(typeof callback === 'function')callback();
     }
-}
 
-function throttle(func , wait) {
-    let previous , timer;
-    return function fn() {
-        let current = Date.now();
-        let diff = current - previous;
-        if(!previous || diff >= wait){
-            func()
-            previous = current;
-        }else if(diff < wait){
-            clearTimeout(timer);
-            timer = setTimeout(fn , wait - diff);
+    inViewport(img) {
+        let {top , left , right , bottom} = img.getBoundingClientRect();
+        let vpHeight = document.documentElement.clientHeight;
+        return (top > 0 && top < vpHeight || bottom > 0 && bottom < vpHeight);
+    }
+
+    loadingImg(img , callback) {
+        let image = new Image();
+        image.src = img.dataset.src;
+        image.onload = function () {
+            img.src = image.src;
+            img.classList.remove('lazyload');
+            if(typeof callback === 'function')callback();
+        }
+    }
+
+    throttle(func , wait) {
+        let previous , timer;
+        return function fn() {
+            let current = Date.now();
+            let diff = current - previous;
+            if(!previous || diff >= wait){
+                func()
+                previous = current;
+            }else if(diff < wait){
+                clearTimeout(timer);
+                timer = setTimeout(fn , wait - diff);
+            }
         }
     }
 }
