@@ -23,8 +23,8 @@ export class Recommend {
     }
 
     renderSlider(slides) {
-        this.slider = new Slider({
-            el: document.querySelector('#slider'),
+        this.slider = new Slider(document.querySelector('#slider'));
+        this.slider.render({
             slides: slides.map(slide => ({
                 link: slide.linkUrl.replace('http://', 'https://'),
                 image: slide.picUrl.replace('http://', 'https://')

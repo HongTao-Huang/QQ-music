@@ -1,10 +1,13 @@
+import { Slider } from "./slider.js";
+
 export class Navbar{
     constructor(el){
         this.$el = el;
         this.$navList = this.$el.querySelector('.navList');
         this.$main = document.querySelector('main');
         this.$el.addEventListener('click' , this.tab.bind(this))
-        this.init(2);
+        this.init(0);
+        this.slide = new Slider(document.querySelector('#slider'))
     }
 
     tab(ev){
@@ -16,6 +19,7 @@ export class Navbar{
         this.$view = this.$main.querySelector(target.dataset.view);
         this.$view.classList.remove('hide');
         window.dispatchEvent(new Event('scroll'));
+        this.slide.initSwiper();
     }
 
     removeActive(){

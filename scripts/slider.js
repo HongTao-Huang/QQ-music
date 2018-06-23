@@ -1,12 +1,10 @@
 export class Slider {
-    constructor(options = {}) {
-        this.$el = options.el;
-        this.slides = options.slides;
-        this.render();
-        this.swiper = this.initSwiper();
+    constructor(el) {
+        this.$el = el;
     }
 
-    render() {
+    render(options = {}) {
+        this.slides = options.slides;
         this.$el.innerHTML = `<div class="swiper-wrapper"></div>`;
         this.$wrap = this.$el.firstElementChild;
         this.$wrap.innerHTML =this.slides.map(slide =>
@@ -17,6 +15,7 @@ export class Slider {
         this.$burster = document.createElement('div');
         this.$burster.setAttribute('class','swiper-pagination');
         this.$el.appendChild(this.$burster);
+        this.swiper = this.initSwiper();
     }
 
     initSwiper() {
