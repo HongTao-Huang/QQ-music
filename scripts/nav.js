@@ -6,7 +6,7 @@ export class Navbar{
         this.$navList = this.$el.querySelector('.navList');
         this.$main = document.querySelector('main');
         this.$el.addEventListener('click' , this.tab.bind(this))
-        this.init(0);
+        this.init(2);
         this.slide = new Slider(document.querySelector('#slider'))
     }
 
