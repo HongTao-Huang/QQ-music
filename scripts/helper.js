@@ -1,7 +1,8 @@
 import { LYRICS_URL , SEARCH_URL} from "./constans.js";
 
 export function songUrl(id) {
-    return `http://ws.stream.qqmusic.qq.com/${id}.m4a?fromtag=46`
+    return 'http://ws.stream.qqmusic.qq.com/C100'+id+'.m4a?fromtag=0&guid=126548448'
+    // `http://ws.stream.qqmusic.qq.com/${id}.m4a?fromtag=46`
 }
 
 export function lyricsUrl(songid) {

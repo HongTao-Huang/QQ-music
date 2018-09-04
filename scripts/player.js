@@ -72,7 +72,7 @@ export class MusicPlayer {
             }
 
             this.songid = options.songid
-            this.$audio.src = songUrl(this.songid)
+            this.$audio.src = songUrl(options.songmid)
             this.fetching = true
             fetch(lyricsUrl(this.songid))
                 .then(res => res.json())
